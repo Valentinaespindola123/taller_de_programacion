@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Calculadora de Conversiones de Longitud</title>
+    <link rel="stylesheet" type="text/css" href="assets/styles/custom-style.css"/>
+</head>
+<body>
+    <img src="src/perrito_nadando.gif" width:400px height:200px >
+    <style>
+         body 
+         {
+            background-image: url('src/playa_fondo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+         }
+         img {
+            width: 200px;
+            height: 120px;
+            position: absolute;
+            left: 1100px;
+            bottom: 10px;
+         }
+         .calculator {
+            font-family: cursive;
+         }
+           h2 {
+            background: #d68fff;
+            padding: 5px;
+            border: rgb(152, 110, 187) 15px solid;
+            color: rgb(255, 255, 255);
+        }
+        input#inputValue 
+        {
+    border-color: blueviolet;
+    border-style:inset;
+    border-width: medium;
+        }
+        select#fromUnit 
+     {
+    border: inset;
+    border-color: blueviolet;
+    border-width: medium;
+     }
+     select#toUnit {
+    border-style: inset;
+    border-color: blueviolet;
+    border-width: medium;
+}
+        h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 780px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+h3#result {
+    background: #d68fff;
+    padding: 5px;
+    border: rgb(152, 110, 187) 15px solid;
+    color: rgb(255, 255, 255);
+    margin-inline-end: 900px;
+}
+button {
+    border-color: blueviolet;
+    border-style: inset;
+    border-width: medium;
+}
+
+    </style>
+</body>
+<div class="calculator">
+    <h2>Calculadora de Conversiones de Longitud</h2>
+    <input type="number" id="inputValue"
+    
+    <label for="fromUnit">De:</label>
+    <select id="fromUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <label for="toUnit">A:</label>
+    <select id="toUnit">
+        <option value="km">Kilómetros</option>
+        <option value="m">Metros</option>
+        <option value="cm">Centímetros</option>
+        <option value="mm">Milímetros</option>
+    </select>
+    
+    <button onclick="convert()">Convertir</button>
+    
+    <h3 id="result">Resultado: </h3>
+</div>
+
+<script>
+    function convert() {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        const fromUnit = document.getElementById('fromUnit').value;
+        const toUnit = document.getElementById('toUnit').value;
+        
+        if (isNaN(inputValue)) {
+            document.getElementById('result').innerText = "Por favor, ingresa un valor numérico.";
+            return;
+        }
+
+        const conversionFactors = {
+            km: 1000000, 
+            m: 1000,     
+            cm: 10,      
+            mm: 1        
+        };
+
+        const valueInMicrometers = inputValue * conversionFactors[fromUnit];
+        
+        const convertedValue = valueInMicrometers / conversionFactors[toUnit];
+
+        document.getElementById('result').innerText =  `Resultado: ${convertedValue} ${toUnit} `;
+    }
+</script>
+
+</body>
+</html>
