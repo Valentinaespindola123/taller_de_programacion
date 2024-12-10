@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<HTML>
+	<HEAD>
+		<TITLE>Calculo IMC</TITLE>
+    <link rel="stylesheet" href="stylessss.css">
+  
+	</HEAD>
+	<BODY>
+		<style>
+		body {
+			background-color: beige;
+			background-image: url("src/imc-img.png");
+			background-size: 650px;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-position: center bottom
+		}
+		</style>
+		<center>
+      <h1 style="color: rgb(247, 4, 4);" >inserte su altura y su peso</h1>
+     
+    <form action="" onsubmit="calcular_imc(event)">
+			<input type="number" name="altura" id="altura" onchange="calcular_imc(event)">
+			<input type="number" name="peso" id="peso" onchange="calcular_imc(event)">
+			<button type="submit" button style="color:rgba(80, 77, 76, 0.568)">calcular peso </button>
+    
+		</form>
+  </center>
+<center>
+
+ <p>
+	El índice de masa corporal (IMC) es el peso de una persona en kilogramos dividido por el cuadrado de la estatura en metros. El IMC es un método de evaluación fácil y económico para la categoría de peso: bajo peso, peso saludable, sobrepeso, y obesidad.
+ </p>
+
+		<h2 id="resu"></h2>
+  </center>
+			<SCRIPT type="text/javascript">
+
+			function calcular_imc(event) {
+				event.preventDefault();
+				var altura;
+				var peso;
+				altura = document.getElementById("altura").value;
+				peso = document.getElementById("peso").value;
+			
+				document.getElementById("resu").innerText = peso/(altura*altura);					
+			}
+			
+		</SCRIPT>
+	</BODY>
+</HTML>
